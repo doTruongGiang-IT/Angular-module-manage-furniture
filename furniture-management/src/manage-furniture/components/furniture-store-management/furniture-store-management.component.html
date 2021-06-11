@@ -1,0 +1,142 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+            <div class="panel panel-danger">
+                  <div class="panel-heading">
+                        <h3 class="panel-title">Furniture List</h3>
+                  </div>
+                  <div class="panel-body">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Image</th>
+                                    <th>Description</th>
+                                    <th>Inventory</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of furnitureList">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.price}}</td>
+                                    <td>
+                                        <img data-src={{item.image}} alt="" [style]="{width: '100px', height: '100px'}">
+                                    </td>
+                                    <td>{{item.description}}</td>
+                                    <td>{{item.inventory}}</td>
+                                    <ng-container *ngIf="item.status;else not">
+                                        <td><span class="label label-success">Censored</span></td>
+                                    </ng-container>
+                                    <ng-template #not>
+                                        <td><span class="label label-danger">Uncensored</span></td>
+                                    </ng-template>
+                                    <td>
+                                        <button type="button" class="btn btn-warning" [routerLink]="['/furniture/edit', item.id]" (click)="editFurnitureWithAsync()">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-danger" [style.margin-top.px]="10" (click)="deleteFurnitureWithAsync(item.id)">
+                                            <i class="glyphicon glyphicon-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                  </div>
+            </div>
+        </div>
+
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">   
+            <ng-container *ngIf="furniture.id === 0;else update">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Management</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <legend>Form Add New Furniture</legend>
+                        
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="number" class="form-control" name="price" [(ngModel)]="price">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Image</label>
+                                <input type="text" class="form-control" name="image" [(ngModel)]="image">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <input type="text" class="form-control" name="description" [(ngModel)]="description">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Inventory</label>
+                                <input type="number" class="form-control" name="inventory" [(ngModel)]="inventory">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <select class="form-control" name="status" [(ngModel)]="status">
+                                    <option value="true">Censored</option>
+                                    <option value="false">Uncensored</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary" (click)="addFurnitureWithAsync()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </ng-container> 
+            
+            <ng-template #update>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                          <h3 class="panel-title">Management</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form>
+                            <legend>Form Update Furniture</legend>
+                        
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="furniture.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="number" class="form-control" name="price" [(ngModel)]="furniture.price">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Image</label>
+                                <input type="text" class="form-control" name="image" [(ngModel)]="furniture.image">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <input type="text" class="form-control" name="description" [(ngModel)]="furniture.description">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Inventory</label>
+                                <input type="number" class="form-control" name="inventory" [(ngModel)]="furniture.inventory">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Status</label>
+                                <select class="form-control" name="status" [(ngModel)]="furniture.status">
+                                    <option value="true">Censored</option>
+                                    <option value="false">Uncensored</option>
+                                </select>
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary" (click)="updateFurnitureWithAsync()">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
+

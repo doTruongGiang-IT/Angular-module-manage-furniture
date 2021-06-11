@@ -1,0 +1,21 @@
+<div class="container">
+    <ng-container *ngFor="let item of furnitureList">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" *ngIf="item.status">
+            <div class="thumbnail">
+                <img data-src={{item.image}} alt="" [style]="{width: '100%', height: '250px'}">
+                <div class="caption">
+                    <h2>{{item.name | titlecase | formatData}}</h2>
+                    <h3>{{item.price | currency}}</h3>
+                    <p>
+                        {{item.description | formatData}}
+                    </p>
+                    <p [style]="{display: 'flex', justifyContent: 'space-evenly'}">
+                        <button type="button" class="btn btn-success" (click)="addToCartWithAsync(item.id)">Add to Cart</button>
+                        <button type="button" class="btn btn-primary" [routerLink]="['/furniture', item.id]" >View details</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+

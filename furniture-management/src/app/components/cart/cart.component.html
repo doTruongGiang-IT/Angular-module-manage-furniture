@@ -1,0 +1,43 @@
+<div class="container">  
+    <h1 [style]="{textAlign: 'center', marginBottom: '40px'}"><strong>Your Cart</strong></h1>  
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of list; index as i">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <img src="{{item.image}}" class="img-responsive" alt="Image" [style]="{width: '150px', height: '150px'}">
+                </td>
+                <td>{{item.price | currency}}</td>
+                <td [style]="{display: 'flex'}">
+                    <input type="text" name="qty" class="form-control" value={{item.qty}} >
+                    <span [style]="{display: 'flex', flexDirection: 'column'}">
+                        <button type="button" class="btn btn-default" [style]="{height: '16.5px', position: 'relative'}" (click)="upQty(item.id)">
+                            <i class="glyphicon glyphicon-chevron-up" [style]="{position: 'absolute', marginLeft: '-7px'}"></i>
+                        </button>
+                        <button type="button" class="btn btn-default" [style]="{height: '16.5px', position: 'relative'}" (click)="downQty(item.id)">
+                            <i class="glyphicon glyphicon-chevron-down"  [style]="{position: 'absolute', marginLeft: '-7px'}"></i>
+                        </button>
+                    </span>
+                </td>
+                <td><button type="button" class="btn btn-danger" (click)="removeItem(i)"><i class="glyphicon glyphicon-trash"></i></button></td>
+            </tr>
+            <tr>
+                <td colspan="3"><strong>TOTAL:</strong></td>
+                <td>{{total | currency}}</td>
+                <td><button type="button" class="btn btn-success" (click)="process()">Process to Checkout</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
