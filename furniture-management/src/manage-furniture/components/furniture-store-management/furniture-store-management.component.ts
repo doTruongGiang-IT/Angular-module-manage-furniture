@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { FurnitureService } from './../../services/furniture/furniture.service';
 import { Component, OnInit } from '@angular/core';
 import { Furniture } from 'src/manage-furniture/models/furniture.class';
@@ -9,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./furniture-store-management.component.css']
 })
 export class FurnitureStoreManagementComponent implements OnInit {
-
+  // private subs: Subscription[] = [];
   public name: string = "";
   public price: number = 0;
   public image: string = "";
@@ -52,17 +53,19 @@ export class FurnitureStoreManagementComponent implements OnInit {
 
   // addFurniture(): void {
   //   let newFurniture = new Furniture(this.name, this.price, this.image, this.description, this.inventory, this.status);
-  //   this.furnitureService.createFurniture(newFurniture).subscribe(newFurniture => {
-  //     this.furnitureList.push(newFurniture);
-  //     this.name = "";
-  //     this.price = 0;
-  //     this.image = "";
-  //     this.description = "";
-  //     this.inventory = 0;
-  //     this.status = false;
-  //   }, error => {
-  //     console.log(error.message);
-  //   });
+      //  this.subs.push(
+      //   this.furnitureService.createFurniture(newFurniture).subscribe(newFurniture => {
+          //     this.furnitureList.push(newFurniture);
+          //     this.name = "";
+          //     this.price = 0;
+          //     this.image = "";
+          //     this.description = "";
+          //     this.inventory = 0;
+          //     this.status = false;
+          //   }, error => {
+          //     console.log(error.message);
+          //   })
+      //  );
   // };
 
   addFurnitureWithAsync(): void {
@@ -86,11 +89,13 @@ export class FurnitureStoreManagementComponent implements OnInit {
   // editFurniture(): void {
   //   let id = Number.parseInt(this.activatedRout.snapshot.params['id']);
   //   if(id) {
-  //     this.furnitureService.getFurnitureByID(id).subscribe(editFurniture => {
-  //       this.furniture = editFurniture;
-  //     }, error => {
-  //       console.log(error.message);
-  //     });
+        //  this.subs.push(
+        //   this.furnitureService.getFurnitureByID(id).subscribe(editFurniture => {
+            //       this.furniture = editFurniture;
+            //     }, error => {
+            //       console.log(error.message);
+            //     })
+        //  );
   //   };
   // };
 
@@ -109,21 +114,23 @@ export class FurnitureStoreManagementComponent implements OnInit {
 
   // updateFurniture(): void {
   //   let updateFurniture = new Furniture(this.furniture.name, this.furniture.price, this.furniture.image, this.furniture.description, this.furniture.inventory, this.furniture.status);
-  //   this.furnitureService.updateFurniture(this.furniture.id, updateFurniture).subscribe(updatedFurniture => {
-  //     let index: number = this.getIndex(updatedFurniture.id);
-  //     this.furnitureList[index] = updatedFurniture;
-  //     this.furniture = {
-  //       id: 0,
-  //       name: "",
-  //       price: 0,
-  //       image: "",
-  //       description: "",
-  //       inventory: 0,
-  //       status: false
-  //     };
-  //   }, error => {
-  //     console.log(error.message);
-  //   });
+      //  this.subs.push(
+      //   this.furnitureService.updateFurniture(this.furniture.id, updateFurniture).subscribe(updatedFurniture => {
+          //     let index: number = this.getIndex(updatedFurniture.id);
+          //     this.furnitureList[index] = updatedFurniture;
+          //     this.furniture = {
+          //       id: 0,
+          //       name: "",
+          //       price: 0,
+          //       image: "",
+          //       description: "",
+          //       inventory: 0,
+          //       status: false
+          //     };
+          //   }, error => {
+          //     console.log(error.message);
+          //   })
+      //  );
   // };
 
   updateFurnitureWithAsync(): void {
@@ -148,15 +155,17 @@ export class FurnitureStoreManagementComponent implements OnInit {
   };
 
   // deleteFurniture(id: number): void {
-  //   this.furnitureService.deleteFurniture(id).subscribe(deletedFurniture => {
-  //     this.furnitureService.getAllFurniture().subscribe(furnitureList => {
-  //       this.furnitureList = furnitureList;
-  //     }, error => {
-  //       console.log(error.message);
-  //     });
-  //   }, error => {
-  //     console.log(error.message);
-  //   });
+      //  this.subs.push(
+      //   this.furnitureService.deleteFurniture(id).subscribe(deletedFurniture => {
+          //     this.furnitureService.getAllFurniture().subscribe(furnitureList => {
+          //       this.furnitureList = furnitureList;
+          //     }, error => {
+          //       console.log(error.message);
+          //     });
+          //   }, error => {
+          //     console.log(error.message);
+          //   })
+      //  );
   // };
 
   deleteFurnitureWithAsync(id: number): void {

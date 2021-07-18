@@ -2,6 +2,7 @@ import { FurnitureService } from './../../services/furniture/furniture.service';
 import { Component, OnInit } from '@angular/core';
 import { Furniture } from 'src/manage-furniture/models/furniture.class';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-furniture-details',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./furniture-details.component.css']
 })
 export class FurnitureDetailsComponent implements OnInit {
-
+  // private subs: Subscription[] = [];
   public furniture: Furniture = {
     id: 0,
     name: "",
@@ -28,11 +29,13 @@ export class FurnitureDetailsComponent implements OnInit {
 
   // loadDetail(): void {
   //   let id = Number.parseInt(this.activatedRoute.snapshot.params['id']);
-  //   this.furnitureService.getFurnitureByID(id).subscribe(furniture => {
-  //     this.furniture = furniture;
-  //   }, error => {
-  //     console.log(error.message);
-  //   });
+  //   this.subs.push(
+  //      this.furnitureService.getFurnitureByID(id).subscribe(furniture => {
+    //     this.furniture = furniture;
+    //   }, error => {
+    //     console.log(error.message);
+    //   })
+  //   );
   // };
 
   loadDetailWithAsync(): void {

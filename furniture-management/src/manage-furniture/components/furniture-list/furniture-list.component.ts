@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { FurnitureService } from './../../services/furniture/furniture.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { Furniture } from 'src/manage-furniture/models/furniture.class';
@@ -8,7 +9,7 @@ import { Furniture } from 'src/manage-furniture/models/furniture.class';
   styleUrls: ['./furniture-list.component.css']
 })
 export class FurnitureListComponent implements OnInit, DoCheck {
-
+  // private subs: Subscription[] = [];
   public furnitureList: Furniture[] = [];
   public cartList: any[] = [];
   public countID: any = [];
@@ -34,12 +35,14 @@ export class FurnitureListComponent implements OnInit, DoCheck {
   };
 
   // loadFurniture(): void {
-  //   this.furnitureService.getAllFurniture().subscribe(furnitureList => {
-  //     this.furnitureList = furnitureList;
-  //     localStorage.setItem("furnitureList", JSON.stringify(this.furnitureList));
-  //   }, error => {
-  //     console.log(error.message);
-  //   });
+      // this.subs.push(
+      //   this.furnitureService.getAllFurniture().subscribe(furnitureList => {
+          //     this.furnitureList = furnitureList;
+          //     localStorage.setItem("furnitureList", JSON.stringify(this.furnitureList));
+          //   }, error => {
+          //     console.log(error.message);
+          //   })
+      // );
   // };
 
   loadFurnitureWithAsync(): void {
@@ -62,12 +65,14 @@ export class FurnitureListComponent implements OnInit, DoCheck {
   };
 
   // addToCart(id: number): void {
-  //   this.furnitureService.getFurnitureByID(id).subscribe(cartItem => {
-  //     this.cartList.push(cartItem);
-  //     localStorage.setItem("cartItem", JSON.stringify(this.cartList));
-  //   }, error => {
-  //     console.log(error.message);
-  //   });
+    // this.subs.push(
+    //   this.furnitureService.getFurnitureByID(id).subscribe(cartItem => {
+        //     this.cartList.push(cartItem);
+        //     localStorage.setItem("cartItem", JSON.stringify(this.cartList));
+        //   }, error => {
+        //     console.log(error.message);
+        //   })
+    // );
   // };
 
   countQuantity(arr: any[], property: string) {
